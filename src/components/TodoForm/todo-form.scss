@@ -1,0 +1,62 @@
+@use "../../shared/styles/mixins/responsive.scss" as r;
+@use "../../shared/styles/mixins/typography.scss" as t;
+@use "../../shared/styles/variables/fonts.scss" as f;
+
+.todo-form {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  @include r.responsive-multiple(phone, phone-large, tablet) {
+    padding: 40px 10px 20px;
+  }
+
+  input {
+    @include t.font-setup(f.$font-weight-bold, f.$font-size-xs);
+    width: 100%;
+    padding: 15px 10px;
+    border: 1px solid var(--border-main);
+    border-radius: 6px;
+    background-image: url("../../assets/images/backgrounds/Background_todo-list-input-v2.png");
+    box-shadow: 0 0 5px var(--shadow-main);
+    font-family: "Playpen Sans Variable", cursive;
+
+    @include r.responsive-multiple(phone, phone-large, tablet) {
+      padding: 12px 10px;
+    }
+
+    @include r.responsive(phone) {
+      @include t.font-setup(f.$font-weight-medium, f.$font-size-2xs);
+    }
+  }
+
+  &__button {
+    @include t.font-setup(f.$font-weight-semi-bold, f.$font-size-sm);
+    padding: 10px 35px;
+    border: none;
+    border-radius: 6px;
+    background-image: url("../../assets/images/backgrounds/Background_todo-list-input-v4.png");
+    background-size: contain;
+    background-position: center;
+    color: var(--text-light);
+    box-shadow: 0 0 5px var(--shadow-main);
+    font-family: "Playpen Sans Variable", cursive;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    @include r.responsive-multiple(phone, phone-large, tablet, tablet-large) {
+      padding: 10px 30px;
+    }
+
+    @include r.responsive(phone) {
+      @include t.font-setup(f.$font-weight-medium, f.$font-size-2xs);
+      padding: 8px 15px;
+    }
+
+    &:hover {
+      color: var(--text-white);
+      box-shadow: 0 0 10px var(--shadow-main);
+    }
+  }
+}

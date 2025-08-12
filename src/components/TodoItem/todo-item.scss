@@ -1,0 +1,129 @@
+@use "../../shared/styles/mixins/responsive.scss" as r;
+@use "../../shared/styles/mixins/typography.scss" as t;
+@use "../../shared/styles/variables/fonts.scss" as f;
+
+.item {
+  @include t.font-setup(f.$font-weight-bold, f.$font-size-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 6px 15px;
+  border: 1px solid var(--border-main);
+  border-radius: 8px;
+  box-shadow: 0 0 5px var(--shadow-main);
+  background-image: url("../../assets/images/backgrounds/Background_todo-list-input.png");
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  color: var(--text-accent);
+  text-transform: capitalize;
+
+  @include r.responsive-multiple(phone, phone-large, tablet, tablet-large) {
+    padding: 4px 15px;
+  }
+
+  @include r.responsive(tablet) {
+    @include t.font-setup(f.$font-weight-medium, f.$font-size-xs);
+  }
+  @include r.responsive(phone-large) {
+    @include t.font-setup(f.$font-weight-regular, f.$font-size-2xs);
+  }
+  @include r.responsive(phone) {
+    @include t.font-setup(f.$font-weight-regular, f.$font-size-3xs);
+  }
+
+  &--completed {
+    text-decoration: line-through;
+    color: var(--text-completed);
+    cursor: default;
+  }
+
+  &__control {
+    display: flex;
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &--toggle {
+      &:hover {
+        animation: leaf-sway 3s ease-in-out infinite;
+      }
+    }
+
+    &--delete {
+      &:hover {
+        animation: shake-circle 0.5s ease-in-out;
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes leaf-sway {
+  0% {
+    transform: rotate(0deg) translateX(0);
+  }
+
+  25% {
+    transform: rotate(4deg) translateX(2px);
+  }
+
+  50% {
+    transform: rotate(0deg) translateX(0);
+  }
+
+  75% {
+    transform: rotate(-4deg) translateX(-2px);
+  }
+
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
+}
+
+@keyframes shake-circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  15% {
+    transform: rotate(5deg);
+  }
+
+  30% {
+    transform: rotate(-5deg);
+  }
+
+  45% {
+    transform: rotate(4deg);
+  }
+
+  60% {
+    transform: rotate(-4deg);
+  }
+
+  75% {
+    transform: rotate(2deg);
+  }
+
+  90% {
+    transform: rotate(-2deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}

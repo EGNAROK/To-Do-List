@@ -1,0 +1,6 @@
+@use '../../../assets/fonts/fonts.scss' as *;
+@use '../variables/fonts.scss' as *;
+
+body {
+  font-family: $font-family-primary;
+}

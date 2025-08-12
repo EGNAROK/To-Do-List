@@ -1,0 +1,33 @@
+@use "../../shared/styles/mixins/responsive.scss" as r;
+@use "../../shared/styles/mixins/typography.scss" as t;
+@use "../../shared/styles/variables/fonts.scss" as f;
+
+.audio-player {
+  @include t.font-setup(f.$font-weight-semi-bold, f.$font-size-2xs);
+  font-family: "Playpen Sans Variable", cursive;
+  color: var(--text-light);
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--border-main);
+  border-radius: 6px;
+  box-shadow: 0 0 5px var(--shadow-main);
+  background-image: url("../../assets/images/backgrounds/Background_todo-list-input-v4.png");
+  background-size: contain;
+  background-position: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  @include r.responsive(phone) {
+    @include t.font-setup(f.$font-weight-regular, f.$font-size-3xs);
+    width: 42px;
+    height: 42px;
+  }
+
+  &:hover {
+    color: var(--text-white);
+    box-shadow: 0 0 10px var(--shadow-main);
+  }
+}

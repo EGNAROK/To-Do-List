@@ -1,0 +1,53 @@
+@use "./shared/styles/mixins/responsive.scss" as r;
+@use "./shared/styles/mixins/typography.scss" as t;
+@use "./shared/styles/variables/fonts.scss" as f;
+
+.app {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url("./assets/images/backgrounds/Background_todo-list-v2.png");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+
+  @include r.responsive-multiple(phone, phone-large, tablet, tablet-large) {
+    background-position: left;
+  }
+
+  &__container {
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto;
+    padding: 80px 20px 0;
+
+    @include r.responsive-multiple(desktop, desktop-large) {
+      padding: 60px 20px 0;
+    }
+
+    @include r.responsive-multiple(phone-large, tablet, tablet-large) {
+      padding: 40px 20px 0;
+    }
+
+    @include r.responsive(phone) {
+      padding: 40px 10px 0;
+    }
+  }
+
+  &__title {
+    @include t.font-setup(f.$font-weight-semi-bold, f.$font-size-xl);
+    text-align: center;
+    color: var(--text-accent);
+    text-shadow: 1px 3px 2px var(--shadow-accent);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+
+    @include r.responsive-multiple(phone-large, tablet) {
+      @include t.font-setup(f.$font-weight-semi-bold, f.$font-size-lg);
+    }
+
+    @include r.responsive(phone) {
+      @include t.font-setup(f.$font-weight-medium, f.$font-size-md);
+    }
+  }
+}

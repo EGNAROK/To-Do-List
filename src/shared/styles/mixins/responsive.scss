@@ -1,0 +1,58 @@
+$breakpoints: (
+  phone: 480px,
+  phone-large: 600px,
+  tablet: 768px,
+  tablet-large: 992px,
+  desktop: 1200px,
+  desktop-large: 1440px,
+);
+
+@mixin responsive($media) {
+  @if map-has-key($breakpoints, $media) {
+    $value: map-get($breakpoints, $media);
+
+    @if $media == phone {
+      @media only screen and (max-width: $value) {
+        @content;
+      }
+    } @else if $media == phone-large {
+      $min: map-get($breakpoints, phone);
+      @media only screen and (min-width: #{ $min + 1px }) and (max-width: $value) {
+        @content;
+      }
+    } @else if $media == tablet {
+      $min: map-get($breakpoints, phone-large);
+      @media only screen and (min-width: #{ $min + 1px }) and (max-width: $value) {
+        @content;
+      }
+    } @else if $media == tablet-large {
+      $min: map-get($breakpoints, tablet);
+      @media only screen and (min-width: #{ $min + 1px }) and (max-width: $value) {
+        @content;
+      }
+    } @else if $media == desktop {
+      $min: map-get($breakpoints, tablet-large);
+      @media only screen and (min-width: #{ $min + 1px }) and (max-width: $value) {
+        @content;
+      }
+    } @else if $media == desktop-large {
+      $min: map-get($breakpoints, desktop);
+      @media only screen and (min-width: #{ $min + 1px }) and (max-width: $value) {
+        @content;
+      }
+    }
+  } @else if $media == pc_tablet {
+    $min: map-get($breakpoints, tablet);
+    @media only screen and (min-width: #{ $min + 1px }) {
+      @content;
+    }
+  }
+}
+
+@mixin responsive-multiple($breakpoints...) {
+  @each $breakpoint in $breakpoints {
+    @include responsive($breakpoint) {
+      @content;
+    }
+  }
+}
