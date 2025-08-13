@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import useSound from 'use-sound';
+import addSound from '../../assets/sounds/add.mp3';
 import './todo-form.scss';
 
 export const TodoForm = ({ addTodo }) => {
   const [text, setText] = useState("");
+  const [playCompleted] = useSound(addSound, { volume: 0.3 });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +21,7 @@ export const TodoForm = ({ addTodo }) => {
         value={text}
         onChange={(e) => setText(e.target.value)} 
       />
-      <button type='submit' className='todo-form__button'>Add</button>
+      <button type='submit' className='todo-form__button' onClick={() => playCompleted()}>Add</button>
     </form>
   )
 }

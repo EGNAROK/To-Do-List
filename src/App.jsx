@@ -4,6 +4,7 @@ import { colors } from './shared/styles/colors/colors'
 import useCSSVariables from './shared/hooks/useCSSVariables'
 import './App.scss'
 import { AudioPlayer } from './components/AudioPlayer/AudioPlayer'
+import { backgrounds } from './assets/images'
 
 function App() {
   useCSSVariables(colors);
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <div className='app'>
+      <img src={backgrounds.app_background_v2} alt="Background" className="app__bg" loading="eager" />
       <AudioPlayer />
       <div className='app__container'>
         <h1 className='app__title'>To-Do List</h1>
