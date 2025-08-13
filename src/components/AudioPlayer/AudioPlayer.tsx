@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import useSound from "use-sound";
-import backgroundMusic from '../../assets/sounds/natureSound.mp3';
+import backgroundMusic from '../../assets/sounds/piano.mp3';
 import './audio-player.scss';
 
 export const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [play, { pause }] = useSound(backgroundMusic, {
-    volume: 0.5,
+    volume: 0.3,
     interrupt: true,
     loop: true,
     preload: true, 

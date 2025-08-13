@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { TodoForm, TodoList } from './components'
 import { colors } from './shared/styles/colors/colors'
 import useCSSVariables from './shared/hooks/useCSSVariables'
-import './App.scss'
 import { AudioPlayer } from './components/AudioPlayer/AudioPlayer'
 import { backgrounds } from './assets/images'
+import './App.scss'
 
 function App() {
   useCSSVariables(colors);
